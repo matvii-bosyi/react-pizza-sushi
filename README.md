@@ -41,9 +41,9 @@ git clone https://github.com/your-username/ReactPizzaSushi.git
 cd ReactPizzaSushi
 bun install
 bun run start
+```
 
-
-⸻
+---
 
 🎯 Purpose
 
