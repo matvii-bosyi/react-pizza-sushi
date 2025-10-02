@@ -8,7 +8,7 @@ import {
 } from '../endpoints'
 import type {
 	IAdmin,
-	IOauth,
+	IOAuth,
 	IOTP,
 	IOTP_Finalize,
 	IOTP_Verify,
@@ -30,7 +30,7 @@ export const AuthService = {
 			url: AUTH_OTP_VERIFY_API_URL,
 			data
 		}),
-	oauth: ({ data }: { data: IOauth }) =>
+	oauth: ({ data }: { data: IOAuth }) =>
 		instance({
 			method: 'POST',
 			url: AUTH_OAUTH_API_URL,
