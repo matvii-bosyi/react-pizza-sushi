@@ -46,3 +46,10 @@ export interface IAdmin {
 export interface IRefresh {
 	refreshToken: string
 }
+
+
+export interface IRefresh_Response extends IAPI_Response {
+	data: {
+		access_token: string
+	}
+}
