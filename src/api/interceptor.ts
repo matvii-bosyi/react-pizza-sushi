@@ -13,14 +13,18 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
 	config => {
-		const authStorage = store.get('AUTH_STORE_NAME-todo')
+		const authStorage = store.get(AUTH_STORE_NAME)
 		const accessToken = authStorage?.state?.accessToken
 
 		if (accessToken && config.headers) {
 			config.headers.Authorization = `Bearer ${accessToken}`
 		}
 
-		console.log('< REQUEST > - ', config)
+		console.log('< REQUEST > - ', {
+			data: config.data,
+			url: (config.baseURL ?? '') + config.url,
+			method: config.method,
+		})
 		return config
 	},
 	error => Promise.reject(error)
