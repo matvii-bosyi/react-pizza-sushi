@@ -1,12 +1,20 @@
 import { Route, Routes, type RouteObject } from 'react-router'
 import { AppRoutes } from './config/routes'
 import Main from './pages/main/Main'
-import Layout from './components/Layouts/Layout'
+import Layout from './components/layouts/Layout'
 import Providers from './providers/Providers'
+import User from './pages/user/User'
+import Restaurants from './pages/restaurants/Restaurants'
+import Restaurant from './pages/restaurant/Restaurant'
+import Product from './pages/product/Product'
 
 const App = () => {
 	const routes: Array<RouteObject> = [
-		{ path: AppRoutes.MAIN, element: <Main /> }
+		{ path: AppRoutes.MAIN, element: <Main /> },
+		{ path: AppRoutes.USER, element: <User /> },
+		{ path: AppRoutes.RESTAURANTS, element: <Restaurants /> },
+		{ path: AppRoutes.RESTAURANT, element: <Restaurant /> },
+		{ path: AppRoutes.PRODUCT, element: <Product /> }
 	]
 
 	return (

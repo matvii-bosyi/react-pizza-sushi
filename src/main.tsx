@@ -8,6 +8,7 @@ createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<BrowserRouter>
 			<App />
+			<div id='modals-root'></div>
 		</BrowserRouter>
 	</StrictMode>
 )

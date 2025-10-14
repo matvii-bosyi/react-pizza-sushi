@@ -1,0 +1,57 @@
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { FavoriteService } from './favorite.service'
+import type { IGetFavoritesResponse, IToggleFavoriteRequest } from './favorite.types'
+import type { IGet_All_Restaurants_Response, IGet_Restaurant_By_Id_Response, IGet_Top_Restaurants_Response } from '../restaurant/restaurant.types'
+import type { IGet_Product_By_Id_Response } from '../products/product.types'
+
+export const useFavoritesQuery = () =>
+	useQuery({
+		queryKey: ['favorites'],
+		queryFn: () => FavoriteService.getAll().then(res => res.data.data as IGetFavoritesResponse),
+	})
+
+export const useToggleFavoriteQuery = () => {
+	const queryClient = useQueryClient()
+	return useMutation({
+		mutationKey: ['toggle favorite'],
+		mutationFn: (data: IToggleFavoriteRequest) => FavoriteService.toggle(data),
+		onSuccess: (data, variables) => {
+            const { type, restaurantId, productId } = variables;
+
+            queryClient.invalidateQueries({ queryKey: ['favorites'] });
+
+            if (type === 'restaurant') {
+                queryClient.setQueryData<IGet_All_Restaurants_Response>(['restaurants'], (oldData) => {
+                    if (!oldData) return oldData;
+                    return {
+                        ...oldData,
+                        restaurants: oldData.restaurants.map(r =>
+                            r.id === restaurantId ? { ...r, isFavorite: !r.isFavorite } : r
+                        ),
+                    };
+                });
+
+				queryClient.setQueryData<Array<IGet_Top_Restaurants_Response>>(['top-restaurants'], (oldData) => {
+                    if (!oldData) return oldData;
+                    return oldData.map(r =>
+                        r.id === restaurantId ? { ...r, isFavorite: !r.isFavorite } : r
+                    );
+                });
+
+                queryClient.setQueryData<IGet_Restaurant_By_Id_Response>(['restaurant', restaurantId], (oldData) => {
+                    if (!oldData) return oldData;
+                    return { ...oldData, isFavorite: !oldData.isFavorite };
+                });
+            }
+
+            if (type === 'product') {
+                queryClient.setQueryData<IGet_Product_By_Id_Response>(['product', productId], (oldData) => {
+                    if (!oldData) return oldData;
+                    return { ...oldData, isFavorite: !oldData.isFavorite };
+                });
+
+                queryClient.invalidateQueries({ queryKey: ['products'] });
+            }
+		},
+	})
+}
