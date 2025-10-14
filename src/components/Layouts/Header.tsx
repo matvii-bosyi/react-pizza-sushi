@@ -37,7 +37,7 @@ const Header = ({
 
 	const handleFavoritesClick = () => {
 		if (isAuth) {
-			navigate('/user/favorites')
+			navigate('/favorites')
 		} else {
 			authModal?.onOpen()
 		}

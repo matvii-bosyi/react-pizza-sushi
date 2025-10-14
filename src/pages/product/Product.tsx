@@ -17,7 +17,7 @@ import TrashIcon from '@/assets/icons/trash.svg?react'
 import ArrowBackIcon from '@/assets/icons/arrowBack.svg?react'
 import FavoriteButton from '@/components/ui/FavoriteButton'
 import ConfirmationModal from '@/features/confirmation-modal/ConfirmationModal'
-import { OtherProductCard } from './components'
+import ProductCard from '@/components/ui/ProductCard'
 
 const Product = () => {
 	const { id } = useParams<{ id: string }>()
@@ -237,7 +237,7 @@ const Product = () => {
 						) : (
 							<div className='flex flex-col gap-[10px]'>
 								{otherProducts?.map(p => (
-									<OtherProductCard key={p.id} product={p} />
+									<ProductCard key={p.id} product={p} variant='other' />
 								))}
 							</div>
 						)}

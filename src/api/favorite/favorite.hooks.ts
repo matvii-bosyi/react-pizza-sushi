@@ -7,7 +7,11 @@ import type { IGet_Product_By_Id_Response } from '../products/product.types'
 export const useFavoritesQuery = () =>
 	useQuery({
 		queryKey: ['favorites'],
-		queryFn: () => FavoriteService.getAll().then(res => res.data.data as IGetFavoritesResponse),
+		queryFn: () => FavoriteService.getAll().then(res => {
+			const data = res.data.data as IGetFavoritesResponse
+			data.products = data.products.map(p => ({ ...p, price: Number(p.price) }))
+			return data
+		}),
 	})
 
 export const useToggleFavoriteQuery = () => {

@@ -3,7 +3,8 @@ export const AppRoutes = {
 	USER: '/user',
 	RESTAURANTS: '/restaurants',
 	RESTAURANT: '/restaurants/:id',
-	PRODUCT: '/product/:id'
+	PRODUCT: '/product/:id',
+	FAVORITES: '/favorites'
 } as const
 
 export type AppRoutes = (typeof AppRoutes)[keyof typeof AppRoutes]

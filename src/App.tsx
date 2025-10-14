@@ -7,6 +7,7 @@ import User from './pages/user/User'
 import Restaurants from './pages/restaurants/Restaurants'
 import Restaurant from './pages/restaurant/Restaurant'
 import Product from './pages/product/Product'
+import Favorites from './pages/favorites/Favorites'
 
 const App = () => {
 	const routes: Array<RouteObject> = [
@@ -14,7 +15,8 @@ const App = () => {
 		{ path: AppRoutes.USER, element: <User /> },
 		{ path: AppRoutes.RESTAURANTS, element: <Restaurants /> },
 		{ path: AppRoutes.RESTAURANT, element: <Restaurant /> },
-		{ path: AppRoutes.PRODUCT, element: <Product /> }
+		{ path: AppRoutes.PRODUCT, element: <Product /> },
+		{ path: AppRoutes.FAVORITES, element: <Favorites /> }
 	]
 
 	return (

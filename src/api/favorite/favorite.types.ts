@@ -5,7 +5,7 @@ export interface IProduct {
 	restaurantId: string
 	name: string
 	description: string
-	price: string
+	price: number
 	weight: number
 	image: string
 	isFavorite: boolean
