@@ -6,14 +6,14 @@ import type {
 	IGet_Products_By_Category_For_Restaurant_Response
 } from './product.types'
 
-export const useProductByIdQuery = (restaurantId: string) =>
+export const useProductByIdQuery = (productId: string) =>
 	useQuery({
-		queryKey: ['product', restaurantId],
+		queryKey: ['product', productId],
 		queryFn: () =>
-			ProductService.getById(restaurantId).then(
+			ProductService.getById(productId).then(
 				res => res.data.data as IGet_Product_By_Id_Response
 			),
-		enabled: !!restaurantId
+		enabled: !!productId
 	})
 
 export const useCategoriesForRestaurantQuery = (restaurantId: string) =>
