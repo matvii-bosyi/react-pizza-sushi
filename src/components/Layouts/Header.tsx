@@ -166,7 +166,7 @@ const Header = ({
 					<ul className='flex flex-row items-center gap-[40px] text-[15px] font-[600]'>
 						<Link to={AppRoutes.RESTAURANTS}>Заклади</Link>
 						<Link to={AppRoutes.RESTAURANTS}>Акції</Link>
-						<Link to={AppRoutes.RESTAURANTS}>Про нас</Link>
+						<Link to={AppRoutes.ABOUT}>Про нас</Link>
 						<Link to={AppRoutes.RESTAURANTS}>Доставка та оплата</Link>
 					</ul>
 					<div className='flex flex-row items-center gap-[10px]'>

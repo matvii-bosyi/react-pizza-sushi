@@ -4,7 +4,8 @@ export const AppRoutes = {
 	RESTAURANTS: '/restaurants',
 	RESTAURANT: '/restaurants/:id',
 	PRODUCT: '/product/:id',
-	FAVORITES: '/favorites'
+	FAVORITES: '/favorites',
+	ABOUT: '/about'
 } as const
 
 export type AppRoutes = (typeof AppRoutes)[keyof typeof AppRoutes]

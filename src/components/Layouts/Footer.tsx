@@ -16,7 +16,7 @@ const Footer = () => {
 							<Link to='/'>Акції</Link>
 						</li>
 						<li>
-							<Link to='/'>Про нас</Link>
+							<Link to={AppRoutes.ABOUT}>Про нас</Link>
 						</li>
 						<li>
 							<Link to='/'>Доставка та оплата</Link>

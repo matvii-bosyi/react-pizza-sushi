@@ -9,20 +9,24 @@ import MinusIcon from '@/assets/icons/minus.svg?react'
 import FavoriteButton from '@/components/ui/FavoriteButton'
 import ConfirmationModal from '@/features/confirmation-modal/ConfirmationModal'
 import { cn } from '@/lib/cn'
+import type { IProduct } from '@/api/favorite/favorite.types'
 
-type Product = IGet_Products_By_Category_For_Restaurant_Response['products'][0]
+type Product = IGet_Products_By_Category_For_Restaurant_Response['products'][0] | IProduct
 
 interface ProductCardProps {
 	product: Product
 	variant: 'restaurant' | 'basket' | 'other' | 'favorite'
+	restaurantId?: string
 }
 
-const ProductCard = ({ product, variant }: ProductCardProps) => {
+const ProductCard = ({ product, variant, restaurantId }: ProductCardProps) => {
 	const { data: basketItems } = useBasketGetAllQuery()
 	const { mutate: basketAction } = useBasketMutation()
 	const { mutate: clearBasket, isPending: isClearingBasket } = useClearBasketMutation()
 	const basketModal = useContext(BasketModalContext)
 	const confirmModal = useModal()
+
+	const restId = restaurantId ? restaurantId : (product as any).restaurantId ? (product as any).restaurantId : (product as any).restaurantsId
 
 
 	const [quantity, setQuantity] = useState(1)
@@ -41,7 +45,7 @@ const ProductCard = ({ product, variant }: ProductCardProps) => {
 		if (
 			basketItems &&
 			basketItems.length > 0 &&
-			currentRestaurantId !== product.restaurantId
+			currentRestaurantId !== restId
 		) {
 			confirmModal.onOpen()
 		} else {
@@ -50,7 +54,7 @@ const ProductCard = ({ product, variant }: ProductCardProps) => {
 			basketAction({
 				productId: product.id!,
 				quantity: newQuantity,
-				restaurantId: product.restaurantId
+				restaurantId: restId
 			})
 		}
 	}
@@ -62,7 +66,7 @@ const ProductCard = ({ product, variant }: ProductCardProps) => {
 			basketAction({
 				productId: product.id!,
 				quantity: newQuantity,
-				restaurantId: product.restaurantId
+				restaurantId: restId
 			})
 		}
 	}
@@ -72,7 +76,7 @@ const ProductCard = ({ product, variant }: ProductCardProps) => {
 			basketAction({
 				productId: product.id!,
 				quantity: 0,
-				restaurantId: product.restaurantId
+				restaurantId: restId
 			})
 		}
 	}
@@ -84,7 +88,7 @@ const ProductCard = ({ product, variant }: ProductCardProps) => {
 					{
 						productId: product.id,
 						quantity: 1,
-						restaurantId: product.restaurantId
+						restaurantId: restId
 					},
 					{
 						onSuccess: () => {

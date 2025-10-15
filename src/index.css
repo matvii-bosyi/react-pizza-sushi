@@ -7,6 +7,10 @@
 	--shadow-header: 0px 1px 4px 0px rgba(114, 138, 155, 0.25);
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
 	@apply bg-[#f3f3f3];
 	font-family: 'Montserrat Alternates', sans-serif;

@@ -12,6 +12,8 @@ const Favorites = () => {
 		'restaurants'
 	)
 
+	console.log(products)
+
 	const activeClass =
 		'text-[#DD302C] font-[600] leading-[17px] pb-[20px] border-b-[3px] border-[#DD302C]'
 	const inactiveClass =
@@ -52,7 +54,7 @@ const Favorites = () => {
 					<div className='flex flex-wrap gap-[20px] justify-center'>
 						{products?.map(product => (
 							<ProductCard product={product} key={product.id} variant='favorite' />
-						))}
+						))}{' '}
 					</div>
 				)}
 			</div>

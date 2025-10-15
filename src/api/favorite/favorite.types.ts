@@ -2,7 +2,7 @@ import type { IGet_All_Restaurants_Response } from '../restaurant/restaurant.typ
 
 export interface IProduct {
 	id: string
-	restaurantId: string
+	restaurantsId: string
 	name: string
 	description: string
 	price: number
