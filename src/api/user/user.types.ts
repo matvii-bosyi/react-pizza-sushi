@@ -1,5 +1,3 @@
-import type { IAPI_Response } from "../types/response.interface"
-
 export interface IAddress {
 	id: string
 	city?: string
@@ -31,7 +29,7 @@ export interface IUpdate_User_Profile {
 	lastName: string
 }
 
-export interface IUpdate_User_Profile_Response extends IAPI_Response {
+export interface IUpdate_User_Profile_Response {
 	data: unknown
 }
 
@@ -40,7 +38,7 @@ export interface IUpdate_User_Phone {
 	otp: string
 }
 
-export interface IUpdate_User_Phone_Response extends IAPI_Response {
+export interface IUpdate_User_Phone_Response {
 	data: unknown
 }
 

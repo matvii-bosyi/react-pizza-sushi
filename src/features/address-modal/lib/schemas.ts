@@ -10,7 +10,7 @@ export const addressSchema = z.object({
 	apartment: z.string().optional(),
 	comment: z.string().optional(),
 	type: z.string().optional(),
-	isMain: z.boolean().default(false),
+	isMain: z.boolean(),
 })
 
 export type AddressSchema = z.infer<typeof addressSchema>

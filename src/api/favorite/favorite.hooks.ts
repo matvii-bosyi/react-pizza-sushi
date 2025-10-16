@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { FavoriteService } from './favorite.service'
 import type { IGetFavoritesResponse, IToggleFavoriteRequest } from './favorite.types'
-import type { IGet_All_Restaurants_Response, IGet_Restaurant_By_Id_Response, IGet_Top_Restaurants_Response } from '../restaurant/restaurant.types'
+import type { IGet_All_Restaurants_Response, IGet_Top_Restaurants_Response } from '../restaurant/restaurant.types'
 import type { IGet_Product_By_Id_Response } from '../products/product.types'
 
 export const useFavoritesQuery = () =>
@@ -19,7 +19,7 @@ export const useToggleFavoriteQuery = () => {
 	return useMutation({
 		mutationKey: ['toggle favorite'],
 		mutationFn: (data: IToggleFavoriteRequest) => FavoriteService.toggle(data),
-		onSuccess: (data, variables) => {
+		onSuccess: (_, variables) => {
             const { type, restaurantId, productId } = variables;
 
             queryClient.invalidateQueries({ queryKey: ['favorites'] });
@@ -42,10 +42,7 @@ export const useToggleFavoriteQuery = () => {
                     );
                 });
 
-                queryClient.setQueryData<IGet_Restaurant_By_Id_Response>(['restaurant', restaurantId], (oldData) => {
-                    if (!oldData) return oldData;
-                    return { ...oldData, isFavorite: !oldData.isFavorite };
-                });
+
             }
 
             if (type === 'product') {

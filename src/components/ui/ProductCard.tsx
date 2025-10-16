@@ -11,7 +11,7 @@ import ConfirmationModal from '@/features/confirmation-modal/ConfirmationModal'
 import { cn } from '@/lib/cn'
 import type { IProduct } from '@/api/favorite/favorite.types'
 
-type Product = IGet_Products_By_Category_For_Restaurant_Response['products'][0] | IProduct
+export type Product = IGet_Products_By_Category_For_Restaurant_Response['products'][0] | IProduct
 
 interface ProductCardProps {
 	product: Product
