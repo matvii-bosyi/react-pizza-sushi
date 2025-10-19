@@ -103,8 +103,8 @@ const ProductCard = ({ product, variant, restaurantId }: ProductCardProps) => {
 
 	if (variant === 'favorite') {
 		return (
-			<div className='bg-white rounded-[36px] p-[20px] w-[650px] h-[260px] flex flex-row gap-[20px]'>
-				<Link to={`/product/${product.id}`} className='relative w-[220px] h-[220px]'>
+			<div className='bg-white rounded-[36px] p-[20px] w-full max-w-[650px] flex flex-col sm:flex-row gap-[20px]'>
+				<Link to={`/product/${product.id}`} className='relative w-full sm:w-[220px] h-[220px]'>
 					<img src={product.image} alt={product.name} className='w-full h-full object-cover rounded-lg' />
 					<div className='absolute top-0 left-0'>
 						<FavoriteButton productId={product.id} isFavorite={product.isFavorite} />
@@ -154,7 +154,7 @@ const ProductCard = ({ product, variant, restaurantId }: ProductCardProps) => {
 
 	if (variant === 'other') {
 		return (
-			<div className='bg-white rounded-[36px] p-[14px] w-[360px] h-[181px] flex flex-row gap-[20px]'>
+			<div className='bg-white rounded-[36px] p-[14px] w-full max-w-[360px] flex flex-row gap-[20px]'>
 				<Link to={`/product/${product.id}`} className='relative w-[50%] aspect-square'>
 					<img src={product.image} alt={product.name} className='w-full h-full object-cover rounded-lg' />
 					<div className='absolute top-0 left-0'>
@@ -261,10 +261,10 @@ const ProductCard = ({ product, variant, restaurantId }: ProductCardProps) => {
 				description='Ви можете замовляти товари тільки з одного ресторану за раз.'
 				confirmText='Очистити'
 			/>
-			<div className={cn('bg-white rounded-[36px] p-[20px] flex flex-row gap-[20px]', {
-				'w-[650px] h-[335px]': variant === 'restaurant',
+			<div className={cn('bg-white rounded-[36px] p-[20px] flex flex-col sm:flex-row gap-[20px] w-full', {
+				'max-w-[650px]': variant === 'restaurant',
 			})}>
-				<Link to={`/product/${product.id}`} className='relative w-[50%] aspect-square'>
+				<Link to={`/product/${product.id}`} className='relative w-full sm:w-[50%] aspect-square'>
 					<img src={product.image} alt={product.name} className='w-full h-full object-cover rounded-lg' />
 					<div className='absolute top-0 left-0'>
 						<FavoriteButton productId={product.id} isFavorite={product.isFavorite} />

@@ -112,7 +112,8 @@ const PersonalData: FC<{ user: User | undefined }> = ({ user }) => {
 						{user.userProfile.addresses?.map((address: Address) => (
 							<div
 								key={address.id}
-								className='flex items-center justify-between'>
+								className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2'
+							>
 								<div className='flex items-center'>
 									<input
 										type='radio'

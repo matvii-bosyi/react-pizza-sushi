@@ -18,7 +18,7 @@ const User = () => {
 	const { logout } = useAuth()
 
 	return (
-		<div className='flex flex-row w-full gap-[39px] pt-[30px]'>
+		<div className='flex flex-col lg:flex-row w-full gap-[20px] lg:gap-[39px] pt-[30px]'>
 			<aside className='flex flex-col gap-[10px] flex-1'>
 				<div className='bg-white px-[20px] py-[26px] rounded-[26px] flex flex-row items-center gap-[13.33px]'>
 					<UserOutlineIcon
@@ -48,7 +48,7 @@ const User = () => {
 					onLogout={logout}
 				/>
 			</aside>
-			<div className='flex-2'>
+			<div className='flex-1 lg:flex-2'>
 				{(() => {
 					switch (activeView) {
 						case 'Особисті дані':

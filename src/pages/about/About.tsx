@@ -18,8 +18,7 @@ const About = () => {
 				<b>SMAKI</b> - це сучасна сервіс-платформа, яка об’єднала найкращі
 				пропозиції від лідируючих сайтів-доставки смачної піци, суші, сетів у
 				Львові:
-				<b> Smaki-maki, Sushi Go, Donatello Pizza, Moonfish та Oh My Pizza.</b> 
-			</p>
+				<b> Smaki-maki, Sushi Go, Donatello Pizza, Moonfish та Oh My Pizza.</b>			</p>
 			<div className='flex gap-[38px] justify-center max-h-[90px] h-[90px]'>
 				<img
 					src={RestImg1}

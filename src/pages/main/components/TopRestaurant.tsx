@@ -64,7 +64,7 @@ const TopThreeRestaurant = () => {
 			<h2>Заклади, які вам можуть сподобатись</h2>
 			{topThreeRestaurants?.map(restaurant => (
 				<div
-					className='bg-white rounded-[51px] p-[26px] grid grid-cols-[424px_1fr] gap-[20px]'
+					className='bg-white rounded-[51px] p-[26px] grid grid-cols-1 lg:grid-cols-[424px_1fr] gap-[20px]'
 					key={restaurant.id}>
 					<RestaurantCard restaurant={restaurant} />
 					<RestaurantProducts restaurantId={restaurant.id} />

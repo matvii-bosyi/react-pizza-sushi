@@ -62,30 +62,30 @@ const Header = ({
 	return (
 		<header
 			className={cn(
-				'fixed top-0 left-1/2 -translate-x-1/2 z-10 w-full max-w-[1440px] bg-white py-[20px] px-[60px] rounded-b-[40px] flex flex-col justify-between items-center shadow-header transition-all duration-400',
+				'fixed top-0 left-1/2 -translate-x-1/2 z-10 w-full max-w-[1440px] bg-white py-[20px] px-5 sm:px-[60px] rounded-b-[40px] flex flex-col justify-between items-center shadow-header transition-all duration-400',
 				isScrolled && 'gap-0'
 			)}
 		>
-			<div className='w-full flex flex-row justify-between items-center'>
+			{/* Desktop Header */}
+			<div className='w-full hidden lg:flex flex-row justify-between items-center'>
 				<div className='flex flex-row items-center gap-[20px]'>
 					{isScrolled && (
-					<button
-						onClick={burgerMenuModal.onOpen}
-						className={cn(
-							'transition-all duration-300 border-[2px] border-black rounded-[15px] p-[6px]',
-						)}
-					>
-						<BurgerMenuIcon />
-					</button>
+						<button
+							onClick={burgerMenuModal.onOpen}
+							className={cn(
+								'transition-all duration-300 border-[2px] border-black rounded-[15px] p-[6px]'
+							)}
+						>
+							<BurgerMenuIcon />
+						</button>
 					)}
 					<div className='flex items-center'>
 						<PinFillIcon color='#dd302c' className='mr-[6px]' />
 						<div>
-
-						<p className='text-[#181818]/60 text-[12px] font-[500]'>
-							Ваше місто
-						</p>
-						{/* Custom select */}
+							<p className='text-[#181818]/60 text-[12px] font-[500]'>
+								Ваше місто
+							</p>
+							{/* Custom select */}
 						</div>
 					</div>
 				</div>
@@ -118,7 +118,10 @@ const Header = ({
 						<button className='bg-[#F3F3F3] rounded-[14px] flex items-center justify-center cursor-pointer w-[44px] h-[44px] transition-colors duration-400 hover:bg-transparent hover:text-[#DD302C]'>
 							<SearchIcon />
 						</button>
-						<button onClick={handleFavoritesClick} className='bg-[#F3F3F3] rounded-[14px] flex items-center justify-center cursor-pointer w-[44px] h-[44px] transition-colors duration-400 hover:bg-transparent hover:text-[#DD302C]'>
+						<button
+							onClick={handleFavoritesClick}
+							className='bg-[#F3F3F3] rounded-[14px] flex items-center justify-center cursor-pointer w-[44px] h-[44px] transition-colors duration-400 hover:bg-transparent hover:text-[#DD302C]'
+						>
 							<HeartIcon />
 						</button>
 						<button
@@ -143,9 +146,23 @@ const Header = ({
 					</div>
 				</div>
 			</div>
+			{/* Mobile Header */}
+			<div className='w-full flex lg:hidden flex-row justify-between items-center'>
+				<Link to={'/'}>
+					<Logo width={150} />
+				</Link>
+				<button
+					onClick={burgerMenuModal.onOpen}
+					className={cn(
+						'transition-all duration-300 border-[2px] border-black rounded-[15px] p-[6px]'
+					)}
+				>
+					<BurgerMenuIcon />
+				</button>
+			</div>
 			<div
 				className={cn(
-					'transition-all duration-300 w-full',
+					'transition-all duration-300 w-full hidden lg:block',
 					isScrolled
 						? 'opacity-0 invisible h-0'
 						: 'opacity-100 visible h-full'
@@ -173,7 +190,10 @@ const Header = ({
 						<button className='bg-[#F3F3F3] rounded-[14px] flex items-center justify-center cursor-pointer w-[44px] h-[44px] transition-colors duration-400 hover:bg-transparent hover:text-[#DD302C]'>
 							<SearchIcon />
 						</button>
-						<button onClick={handleFavoritesClick} className='bg-[#F3F3F3] rounded-[14px] flex items-center justify-center cursor-pointer w-[44px] h-[44px] transition-colors duration-400 hover:bg-transparent hover:text-[#DD302C]'>
+						<button
+							onClick={handleFavoritesClick}
+							className='bg-[#F3F3F3] rounded-[14px] flex items-center justify-center cursor-pointer w-[44px] h-[44px] transition-colors duration-400 hover:bg-transparent hover:text-[#DD302C]'
+						>
 							<HeartIcon />
 						</button>
 						<button

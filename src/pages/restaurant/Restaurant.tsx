@@ -52,12 +52,12 @@ const Restaurant = () => {
 		'text-[#181818]/60 font-[600] leading-[17px] pb-[22px] border-b-[1px] opacity-100 hover:text-[#DD302C] hover:border-[#DD302C] duration-300'
 
 	return (
-		<div className='mt-[40px] w-full space-y-[40px]'>
-			<div className='relative w-full h-[300px]'>
+		<div className='mt-5 sm:mt-[40px] w-full space-y-5 sm:space-y-[40px]'>
+			<div className='relative w-full h-[200px] sm:h-[300px]'>
 				<img
 					src={restaurant.banner}
 					alt={restaurant.name}
-					className='w-full h-full object-cover rounded-[32px]'
+					className='w-full h-full object-cover rounded-b-2xl sm:rounded-[32px]'
 				/>
 				<div className='absolute top-5 left-5'>
 					<Link to={AppRoutes.RESTAURANTS}>
@@ -68,8 +68,8 @@ const Restaurant = () => {
 				</div>
 			</div>
 
-			<div className='flex flex-col gap-[40px] px-[60px] bg-white rounded-[40px]'>
-				<div className='flex flex-row justify-between py-[40px]'>
+			<div className='flex flex-col gap-[20px] sm:gap-[40px] px-5 sm:px-[60px] bg-white rounded-[40px]'>
+				<div className='flex flex-col items-center gap-4 lg:flex-row lg:justify-between py-5 sm:py-[40px]'>
 					<div className='flex flex-row items-center gap-[20px]'>
 						<img
 							src={restaurant.logo}
@@ -78,7 +78,7 @@ const Restaurant = () => {
 						/>
 						<h1 className='text-[22px] font-[700]'>{restaurant.name}</h1>
 					</div>
-					<div className='flex items-center gap-x-[70px]'>
+					<div className='flex items-center gap-x-4 sm:gap-x-8 justify-between'>
 						<div className='flex flex-col items-center gap-1'>
 							<div className='p-[7px] bg-[#FFEDBA] rounded-full'>
 								<StartsIcon className='text-[#CC6821]' />
@@ -103,7 +103,7 @@ const Restaurant = () => {
 				</div>
 
 				<div className='w-full flex-1'>
-					<div className='flex items-center'>
+					<div className='flex items-center overflow-x-auto'>
 						{isLoadingCategories ? (
 							<div>Завантаження категорій...</div>
 						) : (
@@ -112,7 +112,7 @@ const Restaurant = () => {
 									key={category.id}
 									onClick={() => handleNavClick(category.id)}
 									className={cn(
-										'whitespace-nowrap flex-1',
+										'whitespace-nowrap flex-1 px-4',
 										activeCategory === category.id ? activeClass : inactiveClass
 									)}
 								>
@@ -124,7 +124,7 @@ const Restaurant = () => {
 				</div>
 			</div>
 
-			<div className='space-y-12'>
+			<div className='space-y-12 px-5 sm:px-0'>
 				{categories?.map(category => (
 					<div
 						key={category.id}

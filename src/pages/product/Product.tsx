@@ -146,8 +146,8 @@ const Product = () => {
 				confirmText='Очистити'
 			/>
 			<div className='container mx-auto py-10'>
-				<div className='flex flex-row gap-[20px] justify-center'>
-					<div className='max-w-[560px] flex flex-col gap-[20px]'>
+				<div className='flex flex-col lg:flex-row gap-[20px] justify-center'>
+					<div className='w-full lg:max-w-[560px] flex flex-col gap-[20px]'>
 						<div className='relative min-h-[300px]'>
 							<img
 								src={product.image}
@@ -229,13 +229,13 @@ const Product = () => {
 						</div>
 					</div>
 					<div className='flex flex-col gap-[20px]'>
-						<h2 className='text-[18px] font-[600]'>
+						<h2 className='text-[18px] font-[600] text-center'>
 							Інші товари з цього ресторану
 						</h2>
 						{areRestaurantProductsLoading ? (
 							<div>Loading...</div>
 						) : (
-							<div className='flex flex-col gap-[10px]'>
+							<div className='flex flex-col gap-[10px] items-center'>
 								{otherProducts?.map(p => (
 									<ProductCard key={p.id} product={p} variant='other' />
 								))}

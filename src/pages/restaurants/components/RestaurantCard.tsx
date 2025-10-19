@@ -11,7 +11,7 @@ const RestaurantCard = ({
 	restaurant: IGet_All_Restaurants_Response['restaurants'][number]
 }) => {
 	return (
-		<div className='bg-white rounded-[32px] w-[424px] flex flex-col'>
+		<div className='bg-white rounded-[32px] w-full max-w-[424px] flex flex-col'>
 			<div className='relative w-full h-[220px]'>
 				<img
 					src={restaurant.banner}
